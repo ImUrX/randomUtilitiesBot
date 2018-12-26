@@ -23,7 +23,8 @@ client.on("guildMemberAdd", async (member) => {
             .catch(() => { 
                 if(channel.type === "dm") {
                     dmsDisabled = true;
-                    member.guild.channels.get(settings.channel).send(`Your DMs are disabled so I will send the captchas through here. Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] });
+                    channel = member.guild.channels.get(settings.channel);
+                    channel.send(`Your DMs are disabled so I will send the captchas through here. Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] });
                 }
             });
         const m = await channel.awaitMessages(m => !isNaN(m.content), { max: 1, time:30000, errors: ["time"] })
@@ -33,7 +34,7 @@ client.on("guildMemberAdd", async (member) => {
             await channel.send("Timeout! You took too much time in responding to an easy math question.");
         } else if(m.content == res) {
             await channel.send("Success! You got the answer right, you must have a very high IQ!");
-            logger.log(`The user ${member.user.tag}(${member.user.id}) solved the captchas after ${i+1} tries`);
+            logger.log(`The user ${member.user.tag}(${member.user.id}) solved the captchas after ${i+1} try/tries`);
             return;
         } else {
             await channel.send("Failure... that answer isn't right.");
