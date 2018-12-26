@@ -12,6 +12,9 @@ process.on("unhandledrejection", (promiseRejectionEvent) => {
 
 client.on("ready", () => {
     logger.log("Bot is ready");
+    const guild = client.guilds.first();
+    guild.channels.get(settings.channelForOnlineMembers).setName(`Member Count: ${guild.memberCount}`);
+    guild.channels.get(settings.channelForBots).setName(`Bot Count: ${guild.members.filter(member => member.user.bot).size}`);
     setInterval(() => {
         const guild = client.guilds.first();
         guild.channels.get(settings.channelForOnlineMembers).setName(`Member Count: ${guild.memberCount}`);
