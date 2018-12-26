@@ -16,7 +16,7 @@ client.on("ready", () => {
         const guild = client.guilds.first();
         guild.channels.get(settings.channelForOnlineMembers).setName(`Member Count: ${guild.memberCount}`);
         guild.channels.get(settings.channelForBots).setName(`Bot Count: ${guild.members.filter(member => member.user.bot).size}`);
-    });
+    }, 900000);
 });
 
 client.on("guildMemberAdd", async (member) => {
