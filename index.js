@@ -41,8 +41,8 @@ client.on("guildMemberAdd", async (member) => {
         } else if(m.content == res) {
             await channel.send((dmsDisabled ? `<@${member.id}>` : "") + "Success! You got the answer right, you must have a very high IQ!");
             logger.log(`The user ${member.user.tag}(${member.user.id}) solved the captchas after ${i+1} try/tries`);
-            member.roles.add(settings.giveRole);
-            member.roles.delete(settings.removeRole);
+            await member.roles.delete(settings.removeRole);
+            await member.roles.add(settings.giveRole);
             return;
         } else {
             await channel.send("Failure... that answer isn't right.");
