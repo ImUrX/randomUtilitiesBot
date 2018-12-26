@@ -23,7 +23,7 @@ client.on("guildMemberAdd", async (member) => {
             .catch(() => { 
                 if(channel.type === "dm") {
                     dmsDisabled = true;
-                    member.guild.channels.get(settings.channel).send(`Your DMs are disabled. Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] });
+                    member.guild.channels.get(settings.channel).send(`Your DMs are disabled so I will send the captchas through here. Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] });
                 }
             });
         const m = await channel.awaitMessages(m => !isNaN(m.content), { max: 1, time:30000, errors: ["time"] })
@@ -31,7 +31,7 @@ client.on("guildMemberAdd", async (member) => {
             .catch(collected => collected.first());
         if(m == undefined) {
             await channel.send("Timeout! You took too much time in responding to an easy math question.");
-        } else if(m == res) {
+        } else if(m.content == res) {
             await channel.send("Success! You got the answer right, you must have a very high IQ!");
             logger.log(`The user ${member.user.tag}(${member.user.id}) solved the captchas after ${i+1} tries`);
             return;
@@ -52,7 +52,7 @@ function makeARandomImage() {
     const firstNum = randomNumber(51), secondNum = randomNumber(51);
     const res = firstNum + secondNum;
 
-    ctx.fillStyle = "rgba(255,255,255,0.5)";
+    ctx.fillStyle = "rgba(255,255,255,1)";
     ctx.fillRect(0, 0, 420, 124);
 
     for(let i=0; i<randomNumber(10)+3; i++) {
