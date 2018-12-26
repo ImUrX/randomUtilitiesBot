@@ -25,7 +25,7 @@ client.on("guildMemberAdd", async (member) => {
     for(let i = 0; i<3; i++) {
         const { buffer, res } = makeARandomImage();
         let channel = dmsDisabled ? member.guild.channels.get(settings.channelForDisabledDM) : await member.createDM();
-        await channel.send((dmsDisabled ? `<@${member.id}>` : "") + `Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] })
+        await channel.send((dmsDisabled ? `<@${member.id}> ` : "") + `Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] })
             .catch(() => { 
                 if(channel.type === "dm") {
                     dmsDisabled = true;
@@ -37,15 +37,15 @@ client.on("guildMemberAdd", async (member) => {
             .then(collected => collected.first())
             .catch(collected => collected.first());
         if(m == undefined) {
-            await channel.send((dmsDisabled ? `<@${member.id}>` : "") + "Timeout! You took too much time in responding to an easy math question.");
+            await channel.send((dmsDisabled ? `<@${member.id}> ` : "") + "Timeout! You took too much time in responding to an easy math question.");
         } else if(m.content == res) {
-            await channel.send((dmsDisabled ? `<@${member.id}>` : "") + "Success! You got the answer right, you must have a very high IQ!");
+            await channel.send((dmsDisabled ? `<@${member.id}> ` : "") + "Success! You got the answer right, you must have a very high IQ!");
             logger.log(`The user ${member.user.tag}(${member.user.id}) solved the captchas after ${i+1} try/tries`);
             await member.roles.remove(settings.removeRole);
             await member.roles.add(settings.giveRole);
             return;
         } else {
-            await channel.send("Failure... that answer isn't right.");
+            await channel.send((dmsDisabled ? `<@${member.id}> ` : "") + "Failure... that answer isn't right.");
         }
         continue;
     }
