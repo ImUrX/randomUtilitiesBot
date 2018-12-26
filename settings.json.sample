@@ -1,4 +1,9 @@
 {
     "key": "example",
-    "channel": "0"
+    "channelForDisabledDM": "0",
+    "giveRole": "0",
+    "removeRole": "0",
+    "maxMath": "15",
+    "channelForOnlineMembers": "0",
+    "channelForBots": "0"
 }
