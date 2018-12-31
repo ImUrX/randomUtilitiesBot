@@ -43,12 +43,12 @@ module.exports = class extends Event {
             ctx.beginPath();
             ctx.fillText(secondNum, 320, 80);
             const buffer = canvas.toBuffer();
-            let channel = dmsDisabled ? dmOffChannel : await member.createDM();
+            let channel = dmsDisabled ? member.guild.channels.get(dmOffChannel) : await member.createDM();
             await channel.send((dmsDisabled ? `<@${member.id}> ` : "") + `Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] })
                 .catch(() => { 
                     if(channel.type === "dm") {
                         dmsDisabled = true;
-                        channel = dmOffChannel;
+                        channel = member.guild.channels.get(dmOffChannel);
                         channel.send(`<@${member.id}> Your DMs are disabled so I will send the captchas through here. Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] });
                     }
                 });
