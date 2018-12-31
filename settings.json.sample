@@ -1,9 +1,51 @@
 {
-    "key": "example",
-    "channelForDisabledDM": "0",
-    "giveRole": "0",
-    "removeRole": "0",
-    "maxMath": "15",
-    "channelForOnlineMembers": "0",
-    "channelForBots": "0"
+    "token": "example",
+	"prefix": "pewd!",
+    "clientOptions": {
+        "fetchAllMembers": false
+    },
+    "commandEditing": true,
+    "commandLogging": true,
+    "typing": false,
+    "tasks": [
+        {"taskName": "channelBotCounter", "cron": "*/15 * * * *"},
+        {"taskName": "channelMemberCounter", "cron": "*/15 * * * *"}
+    ],
+    "gateways": [
+        {
+            "keys": [
+                {
+                    "name": "dmOffChannel", 
+                    "type": "textchannel", 
+                    "array": false,
+                    "default": null
+                },
+                {
+                    "name": "roleToGive",
+                    "type": "role",
+                    "array": false,
+                    "default": null
+                },
+                {
+                    "name": "roleToRemove",
+                    "type": "role",
+                    "array": false,
+                    "default": null
+                },
+                {
+                    "name": "channelForMembers", 
+                    "type": "voicechannel", 
+                    "array": false,
+                    "default": null
+                },
+                {
+                    "name": "channelForBots", 
+                    "type": "voicechannel", 
+                    "array": false,
+                    "default": null
+                },
+            ],
+            "name": "guilds"
+        }
+    ]
 }
