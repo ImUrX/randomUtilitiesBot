@@ -72,4 +72,3 @@ for(const gateway of settings.gateways)
             bot.gateways[gateway.name].schema.add(key.name, key.type, key);
 
 bot.login(settings.token);
-bot.console.log(settings.customStartingMsg[Math.floor(Math.random() * settings.customStartingMsg.length)]);

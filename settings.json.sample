@@ -15,8 +15,8 @@
         {
             "keys": [
                 {
-                    "name": "dmOffChannel", 
-                    "type": "textchannel", 
+                    "name": "dmOffChannel",
+                    "type": "textchannel",
                     "array": false,
                     "default": null
                 },
@@ -33,17 +33,17 @@
                     "default": null
                 },
                 {
-                    "name": "channelForMembers", 
-                    "type": "voicechannel", 
+                    "name": "channelForMembers",
+                    "type": "voicechannel",
                     "array": false,
                     "default": null
                 },
                 {
-                    "name": "channelForBots", 
-                    "type": "voicechannel", 
+                    "name": "channelForBots",
+                    "type": "voicechannel",
                     "array": false,
                     "default": null
-                },
+                }
             ],
             "name": "guilds"
         }
