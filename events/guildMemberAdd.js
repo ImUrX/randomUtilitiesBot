@@ -52,7 +52,7 @@ module.exports = class extends Event {
                         channel.send(`<@${member.id}> Your DMs are disabled so I will send the captchas through here. Are you a bot?\n\`\`Retries left: ${3-i}\`\``, { files: [buffer] });
                     }
                 });
-            const m = await channel.awaitMessages(m => !isNaN(m.content), { max: 1, time:30000, errors: ["time"] })
+            const m = await channel.awaitMessages(m => !isNaN(m.content), { max: 1, time:60000, errors: ["time"] })
                 .then(collected => collected.first())
                 .catch(collected => collected.first());
             if(m == undefined) {
