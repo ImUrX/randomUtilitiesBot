@@ -11,6 +11,7 @@
         {"taskName": "channelBotCounter", "cron": "*/15 * * * *"},
         {"taskName": "channelMemberCounter", "cron": "*/15 * * * *"}
     ],
+    "disabledCorePieces": [],
     "gateways": [
         {
             "keys": [

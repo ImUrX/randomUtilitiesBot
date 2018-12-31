@@ -10,6 +10,7 @@ const bot = new Client({
     commandLogging: settings.commandLogging,
     commandEditing: settings.commandEditing,
     typing: settings.typing,
+    disabledCorePieces: settings.disabledCorePieces,
     pieceDefaults: {
         arguments: {
             enabled: true,
