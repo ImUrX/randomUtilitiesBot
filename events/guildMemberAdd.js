@@ -9,7 +9,7 @@ module.exports = class extends Event {
 
     async run(member) {
         const { dmOffChannel, roleToGive, roleToRemove } = member.guild.settings.toJSON();
-        if(!member.guild.me.hasPermission(["KICK_MEMBERS", "MANAGE_ROLES"]) || !dmOffChannel || !roleToGive || !roleToRemove ) return;
+        if(!member.guild.me.hasPermission(["KICK_MEMBERS", "MANAGE_ROLES"]) || !dmOffChannel || !roleToGive || !roleToRemove || member.user.bot) return;
         await member.roles.add(roleToRemove);
         let dmsDisabled = false;
         for(let i = 0; i<3; i++) {
